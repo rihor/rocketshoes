@@ -10,7 +10,15 @@ import {
 import { Container, ProductTable, Total } from './styles';
 import * as CartActions from '../../store/modules/cart/actions';
 
-function Cart({ cart, removeFromCart }) {
+function Cart({ cart, removeFromCart, updateAmount }) {
+  function increment(product) {
+    updateAmount(product.id, product.amount + 1);
+  }
+
+  function decrement(product) {
+    updateAmount(product.id, product.amount - 1);
+  }
+
   return (
     <Container>
       <ProductTable>
@@ -37,11 +45,19 @@ function Cart({ cart, removeFromCart }) {
               <td>
                 <div>
                   <button type="button">
-                    <MdRemoveCircleOutline size={20} color="#7159c1" />
+                    <MdRemoveCircleOutline
+                      size={20}
+                      color="#7159c1"
+                      onClick={() => decrement(product)}
+                    />
                   </button>
                   <input type="number" readOnly value={product.amount} />
                   <button type="button">
-                    <MdAddCircleOutline size={20} color="#7159c1" />
+                    <MdAddCircleOutline
+                      size={20}
+                      color="#7159c1"
+                      onClick={() => increment(product)}
+                    />
                   </button>
                 </div>
               </td>
