@@ -4,23 +4,10 @@ export default function cart(state = [], action) {
   switch (action.type) {
     case '@cart/ADD_SUCCESS':
       return produce(state, draft => {
-        // checa se o produto é repetido
-        const productIndex = draft.findIndex(p => p.id === action.product.id);
-        if (productIndex >= 0) {
-          draft[productIndex].amount += 1;
-        } else {
-          draft.push({ ...action.product, amount: 1 });
-        }
+        const { product } = action;
+
+        draft.push(product);
       });
-    /**
-     * vou deixar isso aqui porque eu consegui fazer sem usar a lib
-     * const productIndex = state.findIndex(p => p.id === action.product.id);
-     * if (productIndex >= 0) {
-     *  state[productIndex].amount += 1;
-     *  return state;
-     * }
-     * return [...state, { ...action.product, amount: 1 }];
-     */
 
     case '@cart/REMOVE':
       return produce(state, draft => {
