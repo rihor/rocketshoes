@@ -1,4 +1,7 @@
-# Rocketshoes
+# Rocketshoes 
+<h1 align="center" >  
+  <img src="/readme-assets/screenshot.png" width="600"/>
+</h1>
 
 Projeto usando ReactJS e json-server.
 
@@ -13,3 +16,4 @@ Execute esse comando para instalatar todas as dependências.
 Depois, inicie o server: `json-server server.json -p 3333`
 
 Agora inicie o aplicativo react: `yarn start`
+
